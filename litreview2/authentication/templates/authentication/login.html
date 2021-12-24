@@ -1,0 +1,21 @@
+{% extends 'authentication/base.html' %} 
+{% block content %}
+
+    <p>{{ message }}</p>
+    <aside id="loginDisplay">
+    <section id="signup">
+        <p>Inscrivez-vous maintenant!<br> 
+            <a href="{% url 'signup' %}"><button class="button">S'inscrire</button></a>
+        </p>
+    </section>
+    
+    <section id="connection">
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit">Se connecter</button>
+        </form>
+    </section>
+    </aside>
+    
+{% endblock content %} 

@@ -1,0 +1,23 @@
+{% extends 'litreview/base.html' %}
+{% block content %} 
+    <h2>Suivre d'autres utilisateurs</h2>
+    <form method="POST">
+        {{ form.as_p }}
+        {% csrf_token %} 
+        <button type="submit">Envoyer</button>
+    </form>
+    <h2>Abonnement</h2>
+    {% for follow in follows %}
+    <li>
+        {{ follow.followed_user }}
+        <a href="{% url 'end-follow' follow.id %}">
+            <button type="submit">Se désabonner</button>
+        </a>
+    </li>
+</br>
+    {% endfor %}
+    <h2>Abonnés</h2>
+    {% for follower in followers %}
+    {{ follower.user }}
+    {% endfor %} 
+{% endblock content %} 
