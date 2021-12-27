@@ -193,7 +193,11 @@ def follow_user(request):
             relation.followed_user = form.cleaned_data['followed_user']
             relation.save()
             print(UserFollows.objects.all())
-            return redirect('flux')
+            return render(
+                          request,
+                          'litreview/follow_user_form.html',
+                          context={'form': form, 'follows': follows, 'followers': followers}
+                  )
     return render(
                   request,
                   'litreview/follow_user_form.html',
